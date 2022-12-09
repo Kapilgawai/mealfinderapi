@@ -1,0 +1,864 @@
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* styling of the body  */
+body {
+
+    height: 90vh;
+    
+    background-image: url(drink1.jpg);
+    
+    backface-visibility: hidden;
+    
+    background-size: cover;
+    
+    background-position: center;
+
+    background-repeat: none;    
+
+    backface-visibility: hidden;
+
+    background-attachment: fixed;
+
+    color: #fff;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    margin: 0;
+
+}
+
+
+
+/* styling the the container showing the search results */
+.containerBox {
+
+    margin: auto;
+
+    max-width: 1000px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+
+
+/* styling of flex class (it makes search bar, search button and
+random button in one frame. i.e. make them inline block */
+.flex {
+
+    height: 3rem;
+
+    display: flex;
+
+    text-shadow: white;
+
+    box-shadow: crimson;
+
+    background-attachment: fixed;
+
+}
+
+
+
+/* for main heading -"Meal Finder" */
+.heading {
+
+    text-align: center;
+
+    align-items: center;
+
+    font-weight: 500rem;
+
+    font-size: 4rem;
+
+    margin-top: -0.57rem;
+
+    background-image: linear-gradient(silver,pink,crimson);
+
+    background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+
+
+
+/* for quotation -"A good meal soothes the soul as it regenerates the body!" */
+.sub-heading {
+
+    margin-top: -2.4rem;
+
+    background-image: linear-gradient(to bottom, rgb(251, 169, 205) 20%,crimson);
+
+    background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+    font-weight: 500rem;
+
+    font-size: 0.90rem;
+
+}
+
+
+
+/* for heading - "Please scroll down after search to get more information!" */
+
+.bottom-heading {
+
+    align-items: center;
+
+    text-align: center;
+
+    margin-top: -1.5rem;
+
+    margin-left: -3rem;
+
+    color: #f0b6b6;
+
+    font-weight: 500rem;
+
+    font-size: 1.25rem;
+
+}
+
+
+
+/* style for input bar, buttons and input text in search bar */
+input, button {
+
+    border: 0.5rem;
+
+    border-top-left-radius: 1rem;
+
+    border-bottom-left-radius: 1rem;
+
+    font-size: 1.2rem;
+
+    font-weight: 500rem;
+
+    padding: 0.5rem 0.5rem;
+
+    margin: auto;
+
+    height: 3rem;
+
+    width: 25rem;
+
+    background-image: linear-gradient(to right, white 50%, rgb(245, 138, 174));
+
+    box-shadow: rgb(237, 117, 161);
+
+    background-attachment: fixed;
+
+}
+
+
+
+/* style for search button */
+.search-btn {
+
+    cursor: pointer;
+
+    border-left: 0;
+
+    border-radius: 0;
+
+    border-top-right-radius: 1rem;
+
+    border-bottom-right-radius: 1rem;
+
+    height: 3rem;
+
+    width: 3rem;
+
+    box-shadow: rgb(237, 117, 161);;
+
+    background-attachment: fixed;
+
+}
+
+
+
+/* style for random button */
+.random-btn {
+
+    cursor: pointer;
+
+    margin-left: 0.5rem;
+
+    border-top-right-radius: 0.5rem;
+
+    border-bottom-right-radius: 0.5rem;
+
+    border-top-left-radius: 0.5rem;
+
+    border-bottom-left-radius: 0.5rem;
+
+    height: 3rem;
+
+    width: 3rem;
+
+    box-shadow:  rgb(237, 117, 161);
+
+    background-attachment: fixed;
+
+}
+
+
+
+/* style for the results displayed in external box */
+.food {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    grid-gap: 4rem;
+
+    margin-top: 1rem;
+
+    background-attachment: scroll;
+
+}
+
+
+
+/* style for meal box where meal image displayed */
+.meal {
+
+    cursor: pointer;
+
+    position: relative;
+
+    height: 20rem;
+
+    width: 20rem;
+
+    text-align: center;
+
+    align-items: center;
+
+}
+
+
+
+/* style for images of meal displayed in results */
+.meal img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 7px silver solid;
+
+    border-radius: 3px;
+
+}
+
+ 
+
+/* style for the resultant meal information */
+.meal-info {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    height: 100%;
+
+    width: 100%;
+
+    background: rgb(22, 22, 51);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: opacity 0.2s ease-in;
+
+    opacity: 0;
+
+}
+
+
+
+/*style to meal info when pointer is on resultant image */
+.meal:hover .meal-info {
+
+    opacity: 0.8;
+
+    animation-name: shine;
+
+    animation-duration: 100000000000000s;
+
+    animation-iteration-count: once;
+
+    color: whitesmoke ;
+
+}
+
+/* animation for hover the meal */
+@keyframes shine{
+
+      0%, 100%{
+
+        box-shadow: 0px 0px 32px 2px white;
+
+    }  
+
+     50%{
+
+        box-shadow: 0px 0px 20px 2px  rgb(237, 117, 161);
+
+    }
+
+}
+
+
+
+/* the heading of the meal selected and appear on screen */
+.select-meal-heading{
+
+    font-weight: 500rem;
+
+    font-size: 2rem;
+
+    margin-top: 5rem;
+
+    background-image: linear-gradient(to bottom, silver,pink,crimson);
+
+    background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+    text-transform: uppercase;
+
+    border-top: 4px crimson double;
+
+    margin-left: -5rem;
+
+    margin-right: -5rem;
+
+}
+
+
+
+/* image style of selected meal (large image) */
+.select-meal-img {
+
+    border: 4px white solid;
+
+    border-radius: 8px;
+
+    width:38rem;
+
+    height: 30rem;
+
+}
+
+ 
+
+/* style to information paragraph of selected meal */
+.select-meal-para {
+
+    align-items: center;
+
+    text-align: justify;
+
+    font-weight: 500rem;
+
+    font-size: 1.12rem;
+
+}
+
+
+
+/* give style to paragraph as well as category box of meal */
+  .select-meal-info {
+
+    margin: 1rem;
+
+    padding: 0.5rem;
+
+    border: 0.5rem crimson double;
+
+    border-radius: 0.5rem;
+
+    font-weight: 500rem;
+
+    font-size: 1.12rem;
+
+    text-transform: uppercase;
+
+}
+
+
+
+/* style for heading - "ingredients" */
+.ingredients {
+
+    text-align: center;
+
+    margin-top: 2rem;
+
+    background-image: linear-gradient(to bottom, silver,pink,crimson);
+
+    background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+    text-shadow: white;
+
+    font-weight: 500rem;
+
+    font-size: 2rem;
+
+}
+
+
+
+/* style for ingredients list */
+.ingredients-ul {
+
+    text-align: justify;
+
+    align-items: center;
+
+    font-weight: 500rem;
+
+    font-size: 1.12rem;
+
+    margin-left: -2.5rem;
+
+    color: white;
+
+}
+
+
+
+/* style for favourite button */
+.favorite {
+
+    text-align: center;
+
+    justify-content: center;
+
+    margin-bottom: 4rem;
+
+    cursor: pointer;
+
+    width: 8rem;
+
+    height: 3rem;
+
+    background-image:rgb(237, 117, 161);
+
+    border-radius: 0.5rem;
+
+    font-weight: 100;
+
+}
+
+
+
+/* for icon of the favourite button */
+#icon{
+
+    color: crimson;
+
+}
+
+
+
+/* style for different screen sizes */
+
+@media (max-width : 1200px) {
+
+    .food{
+
+        grid-template-columns: repeat(3, 1fr);
+
+        align-items: center;
+
+        grid-gap: 5.5rem;
+
+    }
+
+    .meal{
+
+        height: 20rem;
+
+        width: 20rem;
+
+    }
+
+    .heading{
+
+        font-weight: 800rem;
+
+        font-size: 5.5rem;
+
+    }
+
+    .sub-heading{
+
+        font-weight: 800rem;
+
+        font-size: 1.25rem;
+
+    }
+
+    .bottom-heading{
+
+        font-weight: 800rem;
+
+        font-size: 1.8rem;
+
+    }
+
+    input, button{
+
+        font-size: 1.5rem;
+
+        font-weight: 800rem;
+
+        height: 4rem;
+
+        width: 29rem;
+
+    }
+
+    .search-btn{
+
+        height: 4rem;
+
+        width: 4rem;
+
+    }
+
+    .random-btn{
+
+        height: 4rem;
+
+        width: 4rem;
+
+    }
+
+    .select-meal-heading{
+
+        font-weight: 800rem;
+
+        font-size: 3.5rem;
+
+    }
+
+    .select-meal-img {
+
+        width:43rem;
+
+        height: 38rem;
+
+    }
+
+    .select-meal-para{
+
+        font-weight: 800rem;
+
+        font-size: 1.7rem;
+
+    }
+
+    .select-meal-info{
+
+        font-weight: 800rem;
+
+        font-size: 1.5rem;
+
+    }
+
+    .ingredients{
+
+        font-weight: 800rem;
+ 
+        font-size: 4rem;
+
+    }
+
+    .ingredients-ul{
+
+        font-weight: 800rem;
+
+        font-size: 1.5rem;
+
+    }
+
+}
+  
+
+
+@media (max-width : 800px) {
+
+    .food{
+
+        grid-template-columns: repeat(3, 1fr);
+
+        align-items: center;
+
+        grid-gap: 2.7rem;
+
+    }
+
+    .meal{
+
+        height: 15rem;
+
+        width: 15rem;
+
+    }
+
+    .heading{
+
+        font-weight: 500rem;
+
+        font-size: 4rem;
+
+    }
+
+    .sub-heading{
+
+        font-weight: 500rem;
+
+        font-size: 0.90rem;
+
+    }
+
+    .bottom-heading{
+
+        font-weight: 500rem;
+
+        font-size: 1.25rem;
+
+    }
+
+    input, button{
+
+        font-size: 1.2rem;
+
+        font-weight: 500rem;
+
+        height: 3rem;
+
+        width: 25rem;
+
+    }
+
+    .search-btn{
+
+        height: 3rem;
+
+       width: 3rem;
+
+    }
+
+    .random-btn{
+
+        height: 3rem;
+
+        width: 3rem;
+
+    }
+
+    .select-meal-heading{
+
+        font-weight: 500rem;
+
+        font-size: 2rem;
+
+    }
+
+    .select-meal-img {
+
+        width:38rem;
+
+        height: 30rem;
+
+    }
+
+    .select-meal-para{
+
+       font-weight: 500rem;
+
+        font-size: 1.12rem;
+
+    }
+
+    .select-meal-info{
+
+        font-weight: 500rem;
+   
+        font-size: 1.12rem;
+ 
+    }
+
+    .ingredients{
+
+        font-weight: 500rem;
+
+        font-size: 2rem;
+
+    }
+
+    .ingredients-ul{
+
+        font-weight: 500rem;
+
+        font-size: 1.12rem;
+
+    }
+
+}
+
+
+
+@media (max-width : 600px) {
+
+    .food{
+
+        grid-template-columns: repeat(2, 1fr);
+
+        align-items: center;
+
+        grid-gap: 1.5rem;
+
+    }
+
+    .meal{
+
+        height: 10rem;
+
+        width: 10rem;
+
+    }
+
+    .heading{
+
+        font-weight: 400rem;
+
+        font-size: 2.5rem;
+
+    }
+
+    .sub-heading{
+
+        font-weight: 400rem;
+
+        font-size: 0.5rem;
+
+    }
+
+    .bottom-heading{
+
+        font-weight: 400rem;
+
+        font-size: 0.9rem;
+
+    }
+
+    input, button{
+
+        font-size: 0.9rem;
+
+        font-weight: 400rem;
+
+        height: 2rem;
+
+        width: 18rem;
+
+    }
+
+    .search-btn{
+
+        height: 2rem;
+
+        width: 2rem;
+
+    }
+
+    .random-btn{
+
+        height: 2rem;
+
+        width: 2rem;
+
+    }
+
+    .select-meal-heading{
+
+        font-weight: 400rem;
+
+        font-size: 1.6rem;
+
+    }
+
+    .select-meal-img {
+
+        width:25rem;
+
+        height: 22rem;
+
+    }
+
+    .select-meal-para{
+
+        font-weight: 400rem;
+
+        font-size: 0.9rem;
+
+    }
+
+    .select-meal-info{
+
+        font-weight: 800rem;
+
+       font-size: 0.9rem;
+
+    }
+
+    .ingredients{
+
+        font-weight: 800rem;
+
+        font-size: 1.5rem;
+
+    }
+
+    .ingredients-ul{
+
+        font-weight: 400rem;
+
+        font-size: 0.9rem;
+
+    }
+
+}
+
+ 
